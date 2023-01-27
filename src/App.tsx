@@ -1,11 +1,10 @@
 import React from "react";
+import Navbar from "./components/Navbar.tsx";
 
-const App = () => {
-  return ( 
-    <h1>
-      Hello World!
-    </h1>
-   );
-}
- 
+const App = () => (
+  <div className="App">
+    <Navbar />
+  </div>
+);
+
 export default App;
