@@ -6,7 +6,7 @@
   "scripts": {
     "test": "react-scripts test --watchAll",
     "test:coverage": "react-scripts test --coverage --watchAll",
-    "start": "webpack-dev-server .",
+    "start": "webpack-dev-server",
     "build": "NODE_ENV=production webpack"
   },
   "keywords": [],
