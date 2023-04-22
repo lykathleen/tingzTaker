@@ -1,10 +1,15 @@
 import React from "react";
-import Navbar from "./components/common/Navbar.tsx";
+import Sidebar from "./Sidebar.tsx";
+import Main from "./Main.tsx";
+import "./App.css";
 
-const App = () => (
-  <div className="App">
-    <Navbar />
-  </div>
-);
+const App = () => {
+  return (
+    <div className="App">
+      <Sidebar />
+      <Main />
+    </div>
+  );
+};
 
 export default App;
