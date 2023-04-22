@@ -1,6 +1,15 @@
 import React from "react";
+import { NewTing } from "./App";
 
-const Sidebar = ({ tingz, handleAdd }) => {
+interface SidebarProps {
+  tingz: NewTing[];
+  handleAdd: () => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({
+  tingz,
+  handleAdd
+}: SidebarProps) => {
   return (
     <div className="sidebar">
       <div className="sidebarHeader">
@@ -9,17 +18,17 @@ const Sidebar = ({ tingz, handleAdd }) => {
       </div>
 
       <div className="sidebarTingz">
-        {tingz.map((ting) => {
+        {tingz.map((ting) => (
           <div className="sidebarTing">
             <div className="sidebarTingTitle">
               <strong>Title</strong>
               <div>Delete</div>
             </div>
 
-            <p> PREVIEW </p>
+            <p> {ting.body} </p>
             <small className="tingMeta">Last modified [date]</small>
-          </div>;
-        })}
+          </div>
+        ))}
       </div>
     </div>
   );
