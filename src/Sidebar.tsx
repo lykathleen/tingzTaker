@@ -4,11 +4,13 @@ import { NewTing } from "./App";
 interface SidebarProps {
   tingz: NewTing[];
   handleAdd: () => void;
+  handleDelete: (id: string) => void
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
   tingz,
-  handleAdd
+  handleAdd,
+  handleDelete
 }: SidebarProps) => {
   return (
     <div className="sidebar">
@@ -22,11 +24,17 @@ const Sidebar: React.FC<SidebarProps> = ({
           <div className="sidebarTing">
             <div className="sidebarTingTitle">
               <strong>Title</strong>
-              <div>Delete</div>
+              <div onClick={() => handleDelete(ting.id)}>Delete</div>
             </div>
 
-            <p> {ting.body} </p>
-            <small className="tingMeta">Last modified [date]</small>
+            <p> {ting.body && ting.body.substring(0, 100) + "..."} </p>
+            <small className="tingMeta">
+              Last modified{" "}
+              {new Date(ting.lastModified).toLocaleDateString("en-GB", {
+                hour: "2-digit",
+                minute: "2-digit"
+              })}
+            </small>
           </div>
         ))}
       </div>
