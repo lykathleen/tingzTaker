@@ -23,9 +23,18 @@ const App: React.FC = () => {
     setTingz([newTing, ...tingz]);
   };
 
+  const handleDelete = (id: string) => {
+    const newTingz: NewTing[] = tingz.filter((ting) => ting.id !== id);
+    setTingz(newTingz);
+  };
+
   return (
     <div className="App">
-      <Sidebar tingz={tingz} handleAdd={handleAdd} />
+      <Sidebar
+        tingz={tingz}
+        handleAdd={handleAdd}
+        handleDelete={handleDelete}
+      />
       <Main />
     </div>
   );
