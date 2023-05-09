@@ -4,13 +4,17 @@ import { NewTing } from "./App";
 interface SidebarProps {
   tingz: NewTing[];
   handleAdd: () => void;
-  handleDelete: (id: string) => void
+  handleDelete: (id: string) => void;
+  activeTing: string;
+  setActiveTing: (id: string) => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
   tingz,
   handleAdd,
-  handleDelete
+  handleDelete,
+  activeTing,
+  setActiveTing
 }: SidebarProps) => {
   return (
     <div className="sidebar">
@@ -21,7 +25,13 @@ const Sidebar: React.FC<SidebarProps> = ({
 
       <div className="sidebarTingz">
         {tingz.map((ting) => (
-          <div className="sidebarTing">
+          <div
+            key={ting.id}
+            className={`sidebarTing ${ting.id === activeTing && "active"}`}
+            onClick={() => {
+              setActiveTing(ting.id);
+            }}
+          >
             <div className="sidebarTingTitle">
               <strong>Title</strong>
               <div onClick={() => handleDelete(ting.id)}>Delete</div>

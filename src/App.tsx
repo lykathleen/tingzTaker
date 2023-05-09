@@ -12,9 +12,10 @@ export interface NewTing {
 }
 const App: React.FC = () => {
   const [tingz, setTingz] = useState<NewTing[]>([]);
+  const [activeTing, setActiveTing] = useState("");
 
   const handleAdd = () => {
-    const newTing: NewTing = {
+    const newTing = {
       id: uuid(),
       title: "Untitled Ting",
       body: "",
@@ -28,14 +29,21 @@ const App: React.FC = () => {
     setTingz(newTingz);
   };
 
+  const getActiveTing = () => {
+    const newTing = tingz.find((ting) => ting.id === activeTing);
+    return newTing;
+  };
+
   return (
     <div className="App">
       <Sidebar
         tingz={tingz}
         handleAdd={handleAdd}
         handleDelete={handleDelete}
+        activeTing={activeTing}
+        setActiveTing={setActiveTing}
       />
-      <Main />
+      <Main getActiveTing={getActiveTing} />
     </div>
   );
 };
