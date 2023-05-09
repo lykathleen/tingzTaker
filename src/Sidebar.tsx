@@ -16,6 +16,8 @@ const Sidebar: React.FC<SidebarProps> = ({
   activeTing,
   setActiveTing
 }: SidebarProps) => {
+  const sortedTingz = tingz.sort((a, b) => b.lastModified - a.lastModified);
+
   return (
     <div className="sidebar">
       <div className="sidebarHeader">
@@ -24,17 +26,17 @@ const Sidebar: React.FC<SidebarProps> = ({
       </div>
 
       <div className="sidebarTingz">
-        {tingz.map((ting) => (
+        {sortedTingz.map((ting) => (
           <div
             key={ting.id}
             className={`sidebarTing ${ting.id === activeTing && "active"}`}
             onClick={() => {
-              setActiveTing(ting.id);
+              setActiveTing(ting.id as string);
             }}
           >
             <div className="sidebarTingTitle">
               <strong>{ting.title}</strong>
-              <div onClick={() => handleDelete(ting.id)}>Delete</div>
+              <div onClick={() => handleDelete(ting.id as string)}>Delete</div>
             </div>
 
             <p> {ting.body && ting.body.substring(0, 100) + "..."} </p>

@@ -5,7 +5,7 @@ import "./App.css";
 import uuid from "react-uuid";
 
 export interface NewTing {
-  id: string;
+  id?: string;
   title?: string;
   body?: string;
   lastModified: number;

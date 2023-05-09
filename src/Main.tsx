@@ -10,7 +10,7 @@ const Main: React.FC<MainProps> = ({ getActiveTing, onUpdateTing }) => {
 
   const onEditField = (key: string, value: string) => {
     onUpdateTing({
-      id: activeTing?.id as string,
+      ...activeTing,
       [key]: value,
       lastModified: Date.now()
     });
