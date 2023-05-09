@@ -89,11 +89,11 @@ button:hover {
   height: 100vh;
 }
 .mainTingEdit,
-.app-main-note-preview {
+.app-main-ting-preview {
   height: 50vh;
 }
 
-.no-active-note {
+.no-active-ting {
   width: 70%;
   height: 100vh;
   line-height: 100vh;

@@ -33,7 +33,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             }}
           >
             <div className="sidebarTingTitle">
-              <strong>Title</strong>
+              <strong>{ting.title}</strong>
               <div onClick={() => handleDelete(ting.id)}>Delete</div>
             </div>
 

@@ -6,8 +6,8 @@ import uuid from "react-uuid";
 
 export interface NewTing {
   id: string;
-  title: string;
-  body: string;
+  title?: string;
+  body?: string;
   lastModified: number;
 }
 const App: React.FC = () => {
@@ -34,6 +34,18 @@ const App: React.FC = () => {
     return newTing;
   };
 
+  const onUpdateTing = (updatedTing: NewTing) => {
+    const updatedTingzArray = tingz.map((ting) => {
+      if (ting.id === activeTing) {
+        return updatedTing;
+      }
+
+      return ting;
+    });
+
+    setTingz(updatedTingzArray);
+  };
+
   return (
     <div className="App">
       <Sidebar
@@ -43,7 +55,7 @@ const App: React.FC = () => {
         activeTing={activeTing}
         setActiveTing={setActiveTing}
       />
-      <Main getActiveTing={getActiveTing} />
+      <Main getActiveTing={getActiveTing} onUpdateTing={onUpdateTing} />
     </div>
   );
 };
