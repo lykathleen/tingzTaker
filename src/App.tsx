@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "./Sidebar.tsx";
 import Main from "./Main.tsx";
 import "./App.css";
@@ -11,8 +11,14 @@ export interface NewTing {
   lastModified: number;
 }
 const App: React.FC = () => {
-  const [tingz, setTingz] = useState<NewTing[]>([]);
+  const [tingz, setTingz] = useState(
+    localStorage.tingz ? JSON.parse(localStorage.tingz) : []
+  );
   const [activeTing, setActiveTing] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("tingz", JSON.stringify(tingz));
+  }, [tingz]);
 
   const handleAdd = () => {
     const newTing = {
@@ -21,7 +27,7 @@ const App: React.FC = () => {
       body: "",
       lastModified: Date.now()
     };
-    setTingz([newTing, ...tingz]);
+    setTingz([newTing, ...tingz]);  
   };
 
   const handleDelete = (id: string) => {

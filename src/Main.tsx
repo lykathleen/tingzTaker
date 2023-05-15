@@ -8,7 +8,7 @@ interface MainProps {
 const Main: React.FC<MainProps> = ({ getActiveTing, onUpdateTing }) => {
   const activeTing = getActiveTing?.();
 
-  const onEditField = (key: string, value: string) => {
+  const onEditField = (key: keyof NewTing, value: string)  => {
     onUpdateTing({
       ...activeTing,
       [key]: value,
